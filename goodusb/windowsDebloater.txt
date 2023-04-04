@@ -14,12 +14,12 @@ DELAY 1500
 STRING Add-MpPreference -ExclusionPath C:\Windows\system32
 ENTER
 DELAY 500
-STRING $Script = Invoke-WebRequest 'https://github.com/ThomasAlakopsa/FlipperZero/blob/main/resources/windows10Debloater.ps1'
+STRING $Script = Invoke-WebRequest 'https://github.com/ThomasAlakopsa/FlipperZero/blob/main/resources/Windows10Debloater.ps1'
 ENTER
 DELAY 100
-$ScriptBlock = [Scriptblock]::Create($Script.Content)
+STRING $ScriptBlock = [Scriptblock]::Create($Script.Content)
 ENTER
 DELAY 100
-Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList ($args + @('someargument'))
+STRING Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList ($args + @('someargument'))  
 ENTER
 DELAY 100

